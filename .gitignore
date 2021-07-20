@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # ignore ini files
-*.ini
+solcast_test.ini
