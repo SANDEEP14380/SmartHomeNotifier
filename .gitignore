@@ -130,3 +130,4 @@ dmypy.json
 
 # ignore ini files
 solcast_test.ini
+API_keys.ini
