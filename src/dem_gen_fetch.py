@@ -16,11 +16,12 @@ API = apikey_bmrs['key']
 def headers_list(report):
     return {
     'DEMMF2T52W': ['Type', 'Week', 'Zone', 'Date', 'MW'],
-    'FOU2T52W': ['ignore','Fuel', 'Date', 'Zone', 'Week', 'Year', 'MW']
+    'FOU2T52W': ['ignore','Fuel', 'Date', 'Zone', 'Week', 'Year', 'MW'],
+    'FOU2T14D' :['ignore','Fuel', 'SpotDate', 'Zone', 'Date', 'MW']
     }.get(report,['date', 'period'])
 
 def main ():
-    list = ['DEMMF2T52W','FOU2T52W']
+    list = ['DEMMF2T52W','FOU2T52W', 'FOU2T14D']
     for report in list:
         http_obj = httplib2.Http()
         resp, content = http_obj.request(
@@ -30,7 +31,7 @@ def main ():
         )
         headers = headers_list(report)
         fields = []
-        with open('./data/'+report+'.csv', 'w') as file:
+        with open('../data/'+report+'.csv', 'w') as file:
             writer = csv.writer(file)
             reader = csv.reader(content.decode('utf-8').splitlines())
             fields = next(reader)

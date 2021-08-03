@@ -40,7 +40,7 @@ def main ():
                                 columns = list
                                 )
             big_data = big_data.append(df, ignore_index = True)
-    big_data.to_csv('./data/B1620.csv')
+    big_data.to_csv('../data/B1620.csv')
 
 
 if __name__ == "__main__":

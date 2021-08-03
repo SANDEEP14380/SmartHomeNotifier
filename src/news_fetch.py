@@ -35,7 +35,7 @@ def main ():
 
         data.update({i:[title, url]})
 
-    with open('./data/newsfeed.json', 'w') as outfile:
+    with open('../data/newsfeed.json', 'w') as outfile:
         json.dump(data, outfile)
 
 

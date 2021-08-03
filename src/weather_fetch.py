@@ -67,7 +67,7 @@ def main():
         data.update({i:[clouds,rain,time,temp,icon,wind]})
 
 
-    with open('./data/weather.json', 'w') as outfile:
+    with open('../data/weather.json', 'w') as outfile:
         json.dump(data, outfile)
 
 if __name__ == "__main__":

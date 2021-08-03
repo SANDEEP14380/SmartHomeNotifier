@@ -11,7 +11,7 @@ from datetime import datetime as dt
 B1620 - latest generation output by fuel type
 '''
 def B1620json ():
-    data = pd.read_csv('./data/B1620.csv')
+    data = pd.read_csv('../data/B1620.csv')
     df = data.tail(11)
     # takes last 11 data points, 1 for each fuel type to show 'current' output
     df.reset_index()
@@ -20,15 +20,15 @@ def B1620json ():
     # convert to dictionary, to_dict() sets column names as dictionary keys, 'list' puts each value in its own index, the 'T' addition transposes the data so the grouping is correct
     data = df.set_index('powerSystemResourceType').T.to_dict('list')
 
-    with open('./data/1620data.json', 'w') as outfile:
+    with open('../data/1620data.json', 'w') as outfile:
         json.dump(data, outfile)
 
 '''
 MID and B1770 - latest imbalance and spot market prices
 '''
 def spot_market_data ():
-    MID = pd.read_csv('./data/MID.csv')
-    imbPrice = pd.read_csv('./data/B1770.csv')
+    MID = pd.read_csv('../data/MID.csv')
+    imbPrice = pd.read_csv('../data/B1770.csv')
     complete = pd.merge(MID, imbPrice)
     # check for rows that where the settlement period 'exists' so the merging is trimmed down to complete data
     complete = complete[np.isfinite(complete['settlementPeriod'])]
@@ -38,14 +38,14 @@ def spot_market_data ():
     # convert to dictionary, to_dict() sets column names as dictionary keys, 'list' puts each value in its own index, the 'T' addition transposes the data so the grouping is correct
     data = complete.set_index(complete.columns[0]).T.to_dict('list')
 
-    with open('./data/priceData.json', 'w') as outfile:
+    with open('../data/priceData.json', 'w') as outfile:
         json.dump(data, outfile)
 
 '''
 System frequency data
 '''
 def frequency_data():
-    frequency = pd.read_csv('./data/frequency.csv')
+    frequency = pd.read_csv('../data/frequency.csv')
     # only taken latest 200 values and modified the date to only push the time to json file as 15 second intervals
     frequency = frequency.tail(200)
     frequency.columns=['date', 'frequency (Hz)']
@@ -62,53 +62,55 @@ def frequency_data():
     frequency['index'] = range(len(frequency))
     data = frequency.set_index(frequency['index']).T.to_dict('list')
 
-    with open('./data/frequency.json', 'w') as outfile:
+    with open('../data/frequency.json', 'w') as outfile:
         json.dump(data, outfile, indent=2, default=str)
 
 '''
 Interconnector data for France, Ireland and Netherlands
 '''
 def interconnector_data():
-    data = pd.read_csv('./data/interconnector.csv')
+    data = pd.read_csv('../data/interconnector.csv')
     # first column and last row are not useful
     data.drop(data.columns[0], axis=1, inplace=True)
     data.drop(data.index[len(data)-1], inplace=True)
 
     data = data.T.to_dict('list')
 
-    with open('./data/interconnector.json', 'w') as outfile:
+    with open('../data/interconnector.json', 'w') as outfile:
         json.dump(data, outfile, indent=2, default=str)
 
 '''
 FOU2T52W - forecast generation for 2-52 weeks ahead by fuel type
 '''
 def forecast_gen_data():
-    data = pd.read_csv('./data/FOU2T52W.csv')
+    data = pd.read_csv('../data/FOU2T52W.csv')
     # first column and last row are not useful
     data.drop(data.columns[0], axis=1, inplace=True)
     data.drop(data.index[len(data)-1], inplace=True)
     data.columns=['Fuel', 'Date', 'Zone', 'Week', 'Year', 'MW']
     data = data.T.to_dict('list')
 
-    with open('./data/forecast_gen.json', 'w') as outfile:
+    with open('../data/forecast_gen.json', 'w') as outfile:
         json.dump(data, outfile, indent=2, default=str)
 
 '''
 DEMMF2T52W - forecast demand for 2-52 weeks ahead at national level
 '''
 def forecast_dem_data():
-    data = pd.read_csv('./data/DEMMF2T52W.csv')
+    data = pd.read_csv('../data/DEMMF2T52W.csv')
     data.drop(data.index[len(data)-1], inplace=True)
     data = data.T.to_dict('list')
 
-    with open('./data/forecast_dem.json', 'w') as outfile:
+    with open('../data/forecast_dem.json', 'w') as outfile:
         json.dump(data, outfile, indent=2, default=str)
 
-
-if __name__ == "__main__":
+def main():
     B1620json()
     spot_market_data()
     frequency_data()
     interconnector_data()
     forecast_gen_data()
     forecast_dem_data()
+
+if __name__ == "__main__":
+    main()

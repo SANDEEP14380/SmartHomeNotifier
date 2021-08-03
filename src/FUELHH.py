@@ -25,7 +25,7 @@ def main ():
         )
     
         fields = []
-        with open('./data/historicgeneration.csv', 'w') as file:
+        with open('../data/historicgeneration.csv', 'w') as file:
             writer = csv.writer(file)
             reader = csv.reader(content.decode('utf-8').splitlines())
             fields = next(reader)

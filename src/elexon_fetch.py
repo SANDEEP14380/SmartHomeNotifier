@@ -62,7 +62,7 @@ def main():
         df = pd.DataFrame(data,
                         columns = list_type(report_code)
                         )
-        df.to_csv('./data/' + report_code + '.csv')
+        df.to_csv('../data/' + report_code + '.csv')
         del data[:]
 '''
 retrieves the report from Elexon using the url from fetch()

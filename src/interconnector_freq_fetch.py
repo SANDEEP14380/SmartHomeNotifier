@@ -26,7 +26,7 @@ def main ():
         )
         if report == 'INTERFUELHH':
             fields = []
-            with open('./data/interconnector.csv', 'w') as file:
+            with open('../data/interconnector.csv', 'w') as file:
                 writer = csv.writer(file)
                 reader = csv.reader(content.decode('utf-8').splitlines())
                 fields = next(reader)
@@ -35,7 +35,7 @@ def main ():
                     writer.writerow(row)
 
         if report == 'FREQ':
-            with open('./data/frequency.csv', 'w') as file:
+            with open('../data/frequency.csv', 'w') as file:
                 writer = csv.writer(file)
                 reader = csv.reader(content.decode('utf-8').splitlines())
 
