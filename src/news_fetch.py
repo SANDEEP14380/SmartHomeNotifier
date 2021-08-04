@@ -1,9 +1,19 @@
+'''
+main() - Report that fetches data from webhose using the API key in .json file
+'''
+
+'''
+imports
+'''
 import httplib2
 import json
 import numpy as np
 import pandas as pd
 import configparser
 
+'''
+API key is fetched which are used to fetch data from the APIs
+'''
 config = configparser.ConfigParser()		
 config.read("API_keys.ini")
 apikey_webnews = config['APIKEY_WEBNEWS']

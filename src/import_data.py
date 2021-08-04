@@ -1,7 +1,13 @@
 '''
 converts a csv file into a JSON file for all report, giving latest gen output
 '''
+'''
+Code converts the .csv files to .json files to connect with the http-server
+'''
 
+'''
+imports
+'''
 import json
 import pandas as pd
 import numpy as np

@@ -1,12 +1,27 @@
+'''
+Report that fetches data from Elexon using the API key
+'''
+
+'''
+main() - takes a date and plugs it into url, as well as looping over periods 1-48 to give url to fetch energy demand and forecast for next year on weekly basis
+elexon_fetch.dates_list() - Produces a list of dates from a start date until present, default to 2 days ago
+
+'''
+
+'''
+imports
+'''
 import csv
 import httplib2
 import numpy as np
 import pandas as pd
 from datetime import datetime as dt
 from datetime import timedelta
-from bs4 import BeautifulSoup
 import configparser
 
+'''
+API key is fetched which are used to fetch data from the APIs
+'''
 config = configparser.ConfigParser()		
 config.read("API_keys.ini")
 apikey_solcast = config['APIKEY_SOLCAST']

@@ -8,7 +8,6 @@ main() - takes a date and plugs it into url, as well as looping over periods 1-4
 post_elexon() - uses the url to fetch the particular information from Elexon
 '''
 
-#! /usr/bin/env python
 '''
 imports
 '''
@@ -25,6 +24,9 @@ from datetime import timedelta
 data  = []
 import configparser
 
+'''
+API key is fetched which are used to fetch data from the APIs
+'''
 config = configparser.ConfigParser()		
 config.read("API_keys.ini")
 apikey_solcast = config['APIKEY_SOLCAST']

@@ -1,8 +1,7 @@
 '''
-Report that fetches data from openweathermap using the API key
+main() - Report that fetches data from openweathermap using the API key in .json file
 '''
 
-#! /usr/bin/env python
 '''
 imports
 '''
@@ -12,6 +11,9 @@ import numpy as np
 import json
 import configparser
 
+'''
+API key is fetched which are used to fetch data from the APIs
+'''
 config = configparser.ConfigParser()		
 config.read("API_keys.ini")
 apikey_openweather = config['APIKEY_OPENWEATHER']

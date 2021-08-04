@@ -1,5 +1,16 @@
-#Import necessary packages
+'''
+Report that fetches data from Elexon using the API key
+'''
 
+'''
+main() - reads the last 30 days energy generated data using FUELHH.py, preprocess the data, predict the energy generated for the next 24hours, merged with agile
+prices obtained from Agile Octopus to predict and notify via email the optimal timing for usage for the home appliances to reduce carbon footprint while reducing the amount spent
+
+'''
+
+'''
+imports
+'''
 import pandas as pd
 import numpy as np
 import matplotlib as mpl
@@ -43,12 +54,18 @@ import configparser
 
 import smtplib
 
+'''
+sendMail function enables to notify the receiver via email with the text input given
+'''
 def sendEmail(text):
     server = smtplib.SMTP_SSL("smtp.gmail.com",465)
     server.login("t6811930@gmail.com","Bodla@123")
     server.sendmail("t6811930@gmail.com","ashishbodla@gmail.com",text)
     server.quit()
 
+'''
+API key is fetched which are used to fetch data from the APIs
+'''
 config = configparser.ConfigParser()		
 config.read("API_keys.ini")
 apikey_openweather = config['APIKEY_ACCUWEATHER']
@@ -63,8 +80,14 @@ options.add_argument("--headless")
 driver = webdriver.Chrome(r"C:\Users\AH05350\Documents\self\documents\Umesh\API_fetch_smarthome/chromedriver.exe", chrome_options=options)
 driver.get('https://www.energy-stats.uk/wp-content/historic-data/csv_agile_A_Eastern_England.csv')
 
+'''
+user input to modify the datetime values depending on the timezone currently
+'''
 day_light_saving = True
 
+'''
+user input to specify the amount of time the receiver wants to use any home appliance efficiently
+'''
 user_input = 3# input in terms of hours
 
 

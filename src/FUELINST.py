@@ -1,3 +1,14 @@
+'''
+Report that fetches data from Elexon using the API key
+'''
+
+'''
+main() - takes a date and plugs it into url, and fetches the past 24hrs energy generated data by fuel type
+'''
+
+'''
+imports
+'''
 
 import csv
 import httplib2

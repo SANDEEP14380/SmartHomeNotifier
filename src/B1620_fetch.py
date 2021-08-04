@@ -1,3 +1,16 @@
+'''
+Report that fetches data from Elexon using the API key
+'''
+
+'''
+main() - takes a date and plugs it into url, as well as looping over periods 1-48 to give url to B1620 data
+elexon_fetch.dates_list() - Produces a list of dates from a start date until present, default to 2 days ago
+
+'''
+
+'''
+imports
+'''
 from bs4 import BeautifulSoup
 import httplib2
 import numpy as np
@@ -7,6 +20,9 @@ from datetime import timedelta
 import elexon_fetch
 import configparser
 
+'''
+API key is fetched which are used to fetch data from the APIs
+'''
 config = configparser.ConfigParser()		
 config.read("API_keys.ini")
 apikey_solcast = config['APIKEY_SOLCAST']
