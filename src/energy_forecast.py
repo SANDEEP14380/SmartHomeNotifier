@@ -60,7 +60,7 @@ sendMail function enables to notify the receiver via email with the text input g
 def sendEmail(text):
     server = smtplib.SMTP_SSL("smtp.gmail.com",465)
     server.login("t6811930@gmail.com","Bodla@123")
-    server.sendmail("t6811930@gmail.com","ashishbodla@gmail.com",text)
+    server.sendmail("t6811930@gmail.com","kesinenisandeep26@gmail.com",text)
     server.quit()
 
 '''
@@ -73,11 +73,11 @@ API = apikey_openweather['key']
 
 options = webdriver.ChromeOptions()
 
-prefs = {'download.default_directory' : r'C:\Users\AH05350\Documents\self\documents\Umesh\API_fetch_smarthome\data'}
+prefs = {'download.default_directory' : r'C:\Users\sande\Desktop\smart\SmartHomeNotifier\data'}
 options.add_experimental_option('prefs', prefs)
 options.add_argument("--headless")
 
-driver = webdriver.Chrome(r"C:\Users\AH05350\Documents\self\documents\Umesh\API_fetch_smarthome/chromedriver.exe", chrome_options=options)
+driver = webdriver.Chrome(r"C:\Users\sande\Desktop\\chromedriver.exe", chrome_options=options)
 driver.get('https://www.energy-stats.uk/wp-content/historic-data/csv_agile_A_Eastern_England.csv')
 
 '''
