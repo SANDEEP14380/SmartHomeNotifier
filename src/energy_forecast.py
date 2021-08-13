@@ -46,9 +46,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 import httplib2
-import pandas as pd
-import numpy as np
-import json
 import configparser
 
 
@@ -60,7 +57,7 @@ sendMail function enables to notify the receiver via email with the text input g
 def sendEmail(text):
     server = smtplib.SMTP_SSL("smtp.gmail.com",465)
     server.login("t6811930@gmail.com","Bodla@123")
-    server.sendmail("t6811930@gmail.com","kesinenisandeep26@gmail.com",text)
+    server.sendmail("t6811930@gmail.com","ashishbodla@gmail.com",text)
     server.quit()
 
 '''
@@ -73,11 +70,11 @@ API = apikey_openweather['key']
 
 options = webdriver.ChromeOptions()
 
-prefs = {'download.default_directory' : r'C:\Users\sande\Desktop\smart\SmartHomeNotifier\data'}
+prefs = {'download.default_directory' : r'C:\Users\AH05350\Documents\self\documents\Umesh\API_fetch_smarthome\energy_dashboard-master\data'}
 options.add_experimental_option('prefs', prefs)
 options.add_argument("--headless")
 
-driver = webdriver.Chrome(r"C:\Users\sande\Desktop\\chromedriver.exe", chrome_options=options)
+driver = webdriver.Chrome(r"C:\Users\AH05350\Documents\self\documents\Umesh\API_fetch_smarthome/chromedriver.exe", chrome_options=options)
 driver.get('https://www.energy-stats.uk/wp-content/historic-data/csv_agile_A_Eastern_England.csv')
 
 '''
@@ -88,7 +85,7 @@ day_light_saving = True
 '''
 user input to specify the amount of time the receiver wants to use any home appliance efficiently
 '''
-user_input = 3# input in terms of hours
+user_input = 2# input in terms of hours
 
 
 def main ():
@@ -188,8 +185,8 @@ def main ():
 
     idx = df.index.get_loc(dt, method='nearest')
 
-    text = "This is program generated Email. The Ideal time to use for the next " + str(user_input) + "hours is \n" + str(dt) + " UTC \n The weather at the specified duration\
-        is " + df['IconPhrase'].iloc[idx] +" and Precipitation probability is " + str(df['PrecipitationProbability'].iloc[idx] / 100)  +  ". \nHave a Great Day!" 
+    text = "This is program generated Email. The Ideal time to use for " + str(user_input) + "hours in the following 24hrs is\n" + str(dt) + " UTC.\n The weather at the specified duration\
+        is " + df['IconPhrase'].iloc[idx] +" and Precipitation probability is " + str(df['PrecipitationProbability'].iloc[idx] / 100)  +  ".\nHave a Great Day!" 
     subject = "Project Finished"
     message = 'Subject: {}\n\n{}'.format(subject, text)
     sendEmail(message)
