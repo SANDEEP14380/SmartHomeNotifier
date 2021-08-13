@@ -20,5 +20,7 @@ libraries used:
 - selenium
 - configparser
 - smtplib
+- pytest
+- unittest
 
 The future work consists of exploring more optimisation algorithm for finding ideal time, forecasting methodology can be applied individually for the fuel types and the low carbon to high carbon ratios are predicted depending on individual fuel type forecast for more accurate information and providing more features to the user as inputs and output can be given by other modes of communication.
