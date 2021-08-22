@@ -57,7 +57,7 @@ sendMail function enables to notify the receiver via email with the text input g
 def sendEmail(text):
     server = smtplib.SMTP_SSL("smtp.gmail.com",465)
     server.login("t6811930@gmail.com","Bodla@123")
-    server.sendmail("t6811930@gmail.com","ashishbodla@gmail.com",text)
+    server.sendmail("t6811930@gmail.com","kesinenisandeep26@gmail.com",text)
     server.quit()
 
 '''
