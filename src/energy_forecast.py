@@ -70,11 +70,11 @@ API = apikey_openweather['key']
 
 options = webdriver.ChromeOptions()
 
-prefs = {'download.default_directory' : r'C:\Users\AH05350\Documents\self\documents\Umesh\API_fetch_smarthome\energy_dashboard-master\data'}
+prefs = {'download.default_directory' : r'C:\Users\sande\Desktop\smart\SmartHomeNotifier\data'}
 options.add_experimental_option('prefs', prefs)
 options.add_argument("--headless")
 
-driver = webdriver.Chrome(r"C:\Users\AH05350\Documents\self\documents\Umesh\API_fetch_smarthome/chromedriver.exe", chrome_options=options)
+driver = webdriver.Chrome(r"C:\\Users\sande\Desktop\chromedriver.exe", chrome_options=options)
 driver.get('https://www.energy-stats.uk/wp-content/historic-data/csv_agile_A_Eastern_England.csv')
 
 '''
